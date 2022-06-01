@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Peter Manik" />
+
+
+<title>Kolokvium</title>
+
+<script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="site_libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<script src="site_libs/plotly-binding-4.10.0/plotly.js"></script>
+<script src="site_libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="site_libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="site_libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="site_libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="site_libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<link rel="icon" href="https://github.com/workflowr/workflowr-assets/raw/main/img/reproducible.png">
+<!-- Add a small amount of space between sections. -->
+<style type="text/css">
+div.section {
+  padding-top: 12px;
+}
+</style>
+
+
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Kolokvium</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="about.html">About</a>
+</li>
+<li>
+  <a href="license.html">License</a>
+</li>
+<li>
+  <a href="kolokvium_manik.html">Kolokvium</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://github.com/manikpeter/Kolokvium">
+    <span class="fab fa-github"></span>
+     
+    Source code
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Kolokvium</h1>
+<h4 class="author">Peter Manik</h4>
+<h4 class="date">30/05/2022</h4>
+
+</div>
+
+
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
+<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+</button>
+</p>
+<div id="workflowr-report" class="collapse">
+<ul class="nav nav-tabs">
+<li class="active">
+<a data-toggle="tab" href="#summary">Summary</a>
+</li>
+<li>
+<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> </a>
+</li>
+<li>
+<a data-toggle="tab" href="#versions">Past versions</a>
+</li>
+</ul>
+<div class="tab-content">
+<div id="summary" class="tab-pane fade in active">
+<p>
+<strong>Last updated:</strong> 2022-06-01
+</p>
+<p>
+<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
+</p>
+<p>
+<strong>Knit directory:</strong> <code>Kolokvium_final/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
+</p>
+<p>
+This reproducible <a href="https://rmarkdown.rstudio.com">R Markdown</a> analysis was created with <a
+  href="https://github.com/workflowr/workflowr">workflowr</a> (version 1.7.0). The <em>Checks</em> tab describes the reproducibility checks that were applied when the results were created. The <em>Past versions</em> tab lists the development history.
+</p>
+<hr>
+</div>
+<div id="checks" class="tab-pane fade">
+<div id="workflowr-checks" class="panel-group">
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date </a>
+</p>
+</div>
+<div id="strongRMarkdownfilestronguptodate" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great! Since the R Markdown file has been committed to the Git repository, you know the exact version of the code that produced these results.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongEnvironmentstrongempty"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Environment:</strong> empty </a>
+</p>
+</div>
+<div id="strongEnvironmentstrongempty" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! The global environment was empty. Objects defined in the global environment can affect the analysis in your R Markdown file in unknown ways. For reproduciblity it’s best to always run the code in an empty environment.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSeedstrongcodesetseed20220601code"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Seed:</strong> <code>set.seed(20220601)</code> </a>
+</p>
+</div>
+<div id="strongSeedstrongcodesetseed20220601code" class="panel-collapse collapse">
+<div class="panel-body">
+<p>The command <code>set.seed(20220601)</code> was run prior to running the code in the R Markdown file. Setting a seed ensures that any results that rely on randomness, e.g. subsampling or permutations, are reproducible.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSessioninformationstrongrecorded"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Session information:</strong> recorded </a>
+</p>
+</div>
+<div id="strongSessioninformationstrongrecorded" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Recording the operating system, R version, and package versions is critical for reproducibility.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongCachestrongnone"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Cache:</strong> none </a>
+</p>
+</div>
+<div id="strongCachestrongnone" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Nice! There were no cached chunks for this analysis, so you can be confident that you successfully produced the results during this run.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongFilepathsstrongrelative"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>File paths:</strong> relative </a>
+</p>
+</div>
+<div id="strongFilepathsstrongrelative" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Using relative paths to the files within your workflowr project makes it easier to run your code on other machines.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstronga0c6547"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> a0c6547 </a>
+</p>
+</div>
+<div id="strongRepositoryversionstronga0c6547" class="panel-collapse collapse">
+<div class="panel-body">
+<p>
+Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
+</p>
+<p>
+The results in this page were generated with repository version a0c6547. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+</p>
+<p>
+Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
+</p>
+<pre><code>
+Untracked files:
+    Untracked:  data/kolokvium_PXD015847_proteinGroups.txt
+
+</code></pre>
+<p>
+Note that any generated files, e.g. HTML, png, CSS, etc., are not included in this status report because it is ok for generated content to have uncommitted changes.
+</p>
+</div>
+</div>
+</div>
+</div>
+<hr>
+</div>
+<div id="versions" class="tab-pane fade">
+
+<p>
+These are the previous versions of the repository in which changes were made to the R Markdown (<code>analysis/kolokvium_manik.Rmd</code>) and HTML (<code>docs/kolokvium_manik.html</code>) files. If you’ve configured a remote Git repository (see <code>?wflow_git_remote</code>), click on the hyperlinks in the table below to view the files as they were in that past version.
+</p>
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+File
+</th>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+<th>
+Message
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+a0c6547
+</td>
+<td>
+manikpeter
+</td>
+<td>
+2022-06-01
+</td>
+<td>
+wflow_publish(c("analysis/about.Rmd", "analysis/index.Rmd", "analysis/license.Rmd",
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
+<p><img src="C:/Users/peter/AppData/Local/RStudio/tmp/paste-DC7E7C4B.png" /></p>
+<p>BirA was fused with the invadopodia-specific protein <strong>Tks5α</strong> and mutant which lacked the membrane-targeting PX domain (<strong>Tks5β</strong>). After addition of biotin, both fusion proteins biotinylated proteins in their vicinity. Biotinylated proteins were isolated by affinity capture and identified by mass spectrometry.</p>
+</div>
+<div id="load-libraries" class="section level1">
+<h1>Load libraries</h1>
+<ul>
+<li>here (path definitions)</li>
+<li>DEP (proteomics workflow)</li>
+<li>dplyr (basic data operations)</li>
+<li>SummarizedExperiment (normalization purposes)</li>
+<li>DT (output table generation)</li>
+<li>ggplot2 (correlation plot)</li>
+<li>gprofiler2; enrichR (GSEA)</li>
+</ul>
+<pre class="r"><code>library(ggplot2)
+library(ggrepel)
+library(enrichR)
+library(gprofiler2)
+library(here)
+library(DEP)
+library(dplyr)
+library(DT)
+library(SummarizedExperiment)</code></pre>
+</div>
+<div id="data-input" class="section level1">
+<h1>Data input</h1>
+<p>As input, we start with <strong>kolokvium_PXD015847_proteinGroups.txt</strong> file, generated by MaxQuant software. We load it as dataframe and look at its parameters.</p>
+<pre class="r"><code>data &lt;- read.delim(here(&quot;data&quot;,&quot;kolokvium_PXD015847_proteinGroups.txt&quot;))
+dim(data)</code></pre>
+<pre><code>[1] 1158  224</code></pre>
+</div>
+<div id="data-preparation" class="section level1">
+<h1>Data preparation</h1>
+<div id="contaminants-filtering" class="section level2">
+<h2>Contaminants filtering</h2>
+<p>We will filter out the most common contaminants:</p>
+<ul>
+<li>Reverse sequences</li>
+<li>Only identified by site proteins</li>
+<li>cRAP protein sequences (e.g common laboratory proteins, proteins added accidentally by dust/physical contact, etc.)</li>
+<li>keratins</li>
+</ul>
+<p>By change of nrow() value you can see how many proteins were filtered out.</p>
+<pre class="r"><code>data &lt;- data %&gt;%
+  filter(Reverse != &quot;+&quot;) %&gt;% 
+  filter(!grepl(&quot;cRAP&quot;, Majority.protein.IDs)) %&gt;% 
+  filter(Only.identified.by.site != &quot;+&quot;) %&gt;% 
+  filter(!grepl(&quot;keratin&quot;, Fasta.headers)) %&gt;%
+  filter(!grepl(&quot;Keratin&quot;, Fasta.headers)) %&gt;% 
+  filter(!grepl(&quot;PE=5&quot;, Fasta.headers))
+
+nrow(data)</code></pre>
+<pre><code>[1] 1097</code></pre>
+<p>1158 proteins identified before filtering -&gt; 1097 proteins after filtering</p>
+</div>
+<div id="unique-identifiers" class="section level2">
+<h2>Unique identifiers</h2>
+<p>To evaluate abundance of proteins, each protein must have unique identifier (protein name/ ID)</p>
+<pre class="r"><code># Are there any duplicated gene names?
+data$Gene.names %&gt;% duplicated() %&gt;% any()</code></pre>
+<pre><code>[1] TRUE</code></pre>
+<pre class="r"><code># Make a table of duplicated gene names
+data %&gt;% group_by(Gene.names) %&gt;% summarize(frequency = n()) %&gt;% 
+  arrange(desc(frequency)) %&gt;% filter(frequency &gt; 1)</code></pre>
+<pre><code># A tibble: 1 x 2
+  Gene.names frequency
+  &lt;chr&gt;          &lt;int&gt;
+1 &quot;&quot;                14</code></pre>
+<p>14 proteins are without name we should assign protein_id as their name.</p>
+<p>We create new column “name” containing protein names or protein_id if protein does not have a name.</p>
+<p>Now we have 0 proteins without a name :)</p>
+<pre class="r"><code># Make unique names using the annotation in the &quot;Gene.names&quot; column as primary names and the annotation in &quot;Protein.IDs&quot; as name for those that do not have an gene name.
+data_unique &lt;- make_unique(data, &quot;Gene.names&quot;, &quot;Protein.IDs&quot;, delim = &quot;;&quot;)
+data_unique %&gt;% group_by(name) %&gt;% summarize(frequency = n()) %&gt;% 
+  arrange(desc(frequency)) %&gt;% filter(frequency &gt; 1)</code></pre>
+<pre><code># A tibble: 0 x 2
+# ... with 2 variables: name &lt;chr&gt;, frequency &lt;int&gt;</code></pre>
+</div>
+<div id="summarizedexperiment" class="section level2">
+<h2>SummarizedExperiment</h2>
+<p>Dataframe is transformed to SummarizedExperiment object for downstream analyses.</p>
+<p>LFQ was chosen for calculation of protein abundance. Names of samples and conditions were extracted from colnames using gsub + regex</p>
+<pre class="r"><code>intensity_columns &lt;- grep(&quot;LFQ.&quot;, colnames(data_unique)) 
+
+# create experimental design
+label_columns &lt;- grep(&quot;Peptides.&quot;, colnames(data_unique)) 
+label_row_names &lt;- colnames(data_unique)[label_columns]
+labels &lt;- gsub(&quot;^Peptides.&quot;,&quot;&quot;,label_row_names)
+condition &lt;- gsub(&quot;_[a-c]$&quot;,&quot;&quot;,gsub(&quot;^[0-9]_&quot;,&quot;&quot;,labels))
+exp_design &lt;- data.frame(
+  label = labels,
+  condition = condition,
+  replicate = c(rep(1:3, times = 3),rep(4:6, times = 3),c(1:3))
+)
+
+# Define the variable types
+exp_design$label &lt;- as.character(exp_design$label)
+exp_design$condition &lt;- as.character(exp_design$condition)
+exp_design$replicate &lt;- as.numeric(exp_design$replicate)
+
+#create SummarizedExperiment object
+data_se &lt;- make_se(data_unique, intensity_columns, exp_design)</code></pre>
+</div>
+<div id="number-of-proteins-identified-in-each-sample" class="section level2">
+<h2>Number of proteins identified in each sample</h2>
+<p>We expect similar number of proteins identified in condition between replicates. NT does not contain Biotin ligase- I would expect less proteins identified there.</p>
+<pre class="r"><code># plot identifications per each condition
+plot_numbers(data_se)</code></pre>
+<p><img src="figure/kolokvium_manik.Rmd/plot-numbers-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="data-filtering" class="section level2">
+<h2>Data filtering</h2>
+<p>Firstly, we plot a barplot of the protein identification overlap between samples. Most of the proteins were present in all of the samples.</p>
+<pre class="r"><code>plot_frequency(data_se)</code></pre>
+<p><img src="figure/kolokvium_manik.Rmd/filter-data-a-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Mild filtering parameters - protein is counted if it was identified in at least 2 replicates.</p>
+<pre class="r"><code>data_filt &lt;- filter_missval(data_se, thr = 1)
+plot_numbers(data_filt)</code></pre>
+<p><img src="figure/kolokvium_manik.Rmd/filter-data-b-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>plot_frequency(data_filt)</code></pre>
+<p><img src="figure/kolokvium_manik.Rmd/filter-data-b-2.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="normalization" class="section level1">
+<h1>Normalization</h1>
+<p><strong>LoessF normalization</strong></p>
+<pre class="r"><code>data_norm_loess &lt;- data_filt
+assay(data_norm_loess)&lt;-limma::normalizeCyclicLoess(assay(data_norm_loess))
+meanSdPlot(data_norm_loess)</code></pre>
+<p><img src="figure/kolokvium_manik.Rmd/normalization-loessF-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>plot_normalization(data_filt, data_norm_loess)</code></pre>
+<p><img src="figure/kolokvium_manik.Rmd/normalization-loessF-2.png" width="672" style="display: block; margin: auto;" /></p>
+<div id="imputation-of-nas" class="section level2">
+<h2>Imputation of NAs</h2>
+<p>BioID data often contain lots of missing values in control, these need to be imputed for downstream statistical analysis. Since 0s in this context represent proteins not biotinylated in Neg CTRL it is type MNAR.</p>
+<ul>
+<li><strong>MNAR</strong>: proteins below detection limit, low abundance proteins</li>
+</ul>
+<p>Various methods available for MNAR imputation I chose MinProb</p>
+<ul>
+<li>MinProb: imputation by random draws from a Gaussian distribution centered to a minimal value (q-th quantile (5% quantile used)</li>
+</ul>
+<p>Heatmap of missing proteins in at least 1 condition (white = NA; black = present)</p>
+<pre class="r"><code>plot_missval(data_norm_loess)</code></pre>
+<p><img src="figure/kolokvium_manik.Rmd/imputation-heatmap-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Plot intensity distributions and cumulative fraction of proteins with and without missing values</p>
+<pre class="r"><code>plot_detect(data_norm_loess)</code></pre>
+<p><img src="figure/kolokvium_manik.Rmd/imputation-distribution-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Impute the missing values</p>
+<pre class="r"><code>data_imp &lt;- impute(data_norm_loess,fun = &quot;MinProb&quot;, q = 0.05)</code></pre>
+<pre><code>[1] 0.3216465</code></pre>
+<pre class="r"><code>plot_imputation(data_norm_loess, data_imp)</code></pre>
+<p><img src="figure/kolokvium_manik.Rmd/imputation-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Plot PCA for 500 most variable proteins on Y axis variation between biological replicates can be observed (remember 1-3 are technical replicates so 1-3 = 1.BR, 4-6 = 2.BR). X axis represent biological variance - variance caused by specific biotinylation by fusion proteins (NT, BirA, TKS_WT, TKS_del)</p>
+<pre class="r"><code>plot_pca(data_imp, x = 1, y = 2, n = 500, point_size = 4)</code></pre>
+<p><img src="figure/kolokvium_manik.Rmd/imputation-pca-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="differential-expression" class="section level1">
+<h1>Differential expression</h1>
+<p>Only BirA used as control in this step because: a) NT is similar to BirA according to PCA b) it is more suitable control (identifies non-specifically biotinylated proteins). Alternatively I could merge BirA with NT and used that as a control. Difference between WT and MUT version of TKS5 was also tested.</p>
+<pre class="r"><code># Test every sample versus control
+data_diff &lt;- test_diff(data_imp, type = &quot;control&quot;, control = &quot;BirA&quot;)
+
+# Test manually defined comparisons
+data_diff_manual &lt;- test_diff(data_imp, type = &quot;manual&quot;,
+                             test = &quot;BirA_TKS5WT_vs_BirA_TKS5DelPX&quot;)</code></pre>
+<p>We need to <strong>correct for multiple testing</strong> and <strong>set cutoffs</strong> for calling a protein differentially expressed:</p>
+<p>- logFC -&gt; 1</p>
+<p>- adjusted p-value -&gt; 0.05</p>
+<pre class="r"><code>dep &lt;- add_rejections(data_diff, alpha = 0.05, lfc = log2(1))
+dep_manual &lt;- add_rejections(data_diff_manual, alpha = 0.05, lfc = log2(1))</code></pre>
+</div>
+<div id="data-visualization" class="section level1">
+<h1>Data visualization</h1>
+<p>Correlation of significantly enriched proteins between samples. Technical replicates are identical, biological are highly similar. As expected both proteins have similar sets of identified proteins in comparison to control samples (NT; CTRL).</p>
+<pre class="r"><code># Plot the Pearson correlation matrix
+plot_cor(dep, significant = TRUE, lower = 0, upper = 1, pal = &quot;Blues&quot;)</code></pre>
+<p><img src="figure/kolokvium_manik.Rmd/correlation-matrix-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div id="gsea" class="section level2">
+<h2>GSEA</h2>
+<p>WT vs BirA - I expect enrichment of cytoskeleton/ plasma membrane in <a href="GO:CC" class="uri">GO:CC</a>.</p>
+<p>Indeed these categories are one of the top hits.</p>
+<pre class="r"><code>data_results &lt;- get_results(dep)
+gostplot(gost(query = c(data_results$name[data_results$BirA_TKS5WT_vs_BirA_significant &amp; data_results$BirA_TKS5WT_vs_BirA_ratio &gt; 0])), capped = F, interactive= T)</code></pre>
+<div id="htmlwidget-bfc2c60aa4a5e36728af" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-bfc2c60aa4a5e36728af">{"x":{"data":[{"x":[157.89909015346],"y":[1.30111194227824],"text":"CORUM:5318 (3) <br> DDEF1-CTTN-PXN complex <br> 4.999e-02","key":["CORUM:5318"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(102,170,0,1)","opacity":0.8,"size":3.77952755905512,"symbol":"circle","line":{"width":1.88976377952756,"color":"rgba(102,170,0,1)"}},"hoveron":"points","set":"SharedData080cf72e","name":"CORUM","legendgroup":"CORUM","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","_isSimpleKey":true,"_isNestedKey":false,"frame":null},{"x":[58.3367308158552,72.4715962457674,59.2920699427667,49.3420052535646,45.2361238320342],"y":[2.27049262322992,2.0197241351704,1.73852676493348,1.72386305022173,1.61131250657985],"text":["GO:0031532 (108) <br> actin cytoskeleton reorganization <br> 5.364e-03","GO:0048856 (5718) <br> anatomical structure development <br> 9.556e-03","GO:0032502 (6326) <br> developmental process <br> 1.826e-02","GO:0009653 (2685) <br> anatomical structure morphogenesis <br> 1.889e-02","GO:0006014 (3) <br> D-ribose metabolic process <br> 2.447e-02"],"key":["GO:0031532","GO:0048856","GO:0032502","GO:0009653","GO:0006014"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(255,153,0,1)","opacity":0.8,"size":[15.9176910426532,21.4013585933134,21.5188488911217,20.4962500771343,3.77952755905512],"symbol":"circle","line":{"width":1.88976377952756,"color":"rgba(255,153,0,1)"}},"hoveron":"points","set":"SharedData080cf72e","name":"GO:BP","legendgroup":"GO:BP","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","_isNestedKey":false,"frame":null},{"x":[30.6033788137396,30.4268150396442,31.758313618411,35.3643690517016,30.7425526121443,31.7562363975393,30.6490776729173,31.3657188736576,34.3984613463559,32.2443833023915,33.9684766259117,30.0466836201211,33.0711172093325,38.1166867067189,30.2170157316014],"y":[7.6636895906683,5.61185574988936,5.22538447540779,4.8977971142763,3.97504125840779,3.16611206628548,2.94297892395004,2.8835947346395,2.50151016499544,2.38025910921322,2.30470118407059,2.16909213255294,1.86441038643432,1.59789658945715,1.34695593528792],"text":["GO:0005829 (5373) <br> cytosol <br> 2.169e-08","GO:0005737 (12193) <br> cytoplasm <br> 2.444e-06","GO:0030054 (2076) <br> cell junction <br> 5.951e-06","GO:0070161 (839) <br> anchoring junction <br> 1.265e-05","GO:0005911 (495) <br> cell-cell junction <br> 1.059e-04","GO:0030027 (203) <br> lamellipodium <br> 6.822e-04","GO:0005856 (2334) <br> cytoskeleton <br> 1.140e-03","GO:0015629 (501) <br> actin cytoskeleton <br> 1.307e-03","GO:0044291 (73) <br> cell-cell contact zone <br> 3.151e-03","GO:0031252 (421) <br> cell leading edge <br> 4.166e-03","GO:0042995 (2312) <br> cell projection <br> 4.958e-03","GO:0002102 (30) <br> podosome <br> 6.775e-03","GO:0033588 (6) <br> elongator holoenzyme complex <br> 1.366e-02","GO:1904813 (124) <br> ficolin-1-rich granule lumen <br> 2.524e-02","GO:0005622 (17758) <br> intracellular anatomical structure <br> 4.498e-02"],"key":["GO:0005829","GO:0005737","GO:0030054","GO:0070161","GO:0005911","GO:0030027","GO:0005856","GO:0015629","GO:0044291","GO:0031252","GO:0042995","GO:0002102","GO:0033588","GO:1904813","GO:0005622"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(16,150,24,1)","opacity":0.8,"size":[21.3286089035967,22.2636473002165,20.1768620791361,18.9987012457506,18.2684543104266,16.9431672608198,20.3230691722829,18.2855387697198,15.2351627155044,18.0368595951686,20.3112966628974,13.5093737466829,9.11792447610972,16.1494512114953,22.6771653543307],"symbol":"circle","line":{"width":1.88976377952756,"color":"rgba(16,150,24,1)"}},"hoveron":"points","set":"SharedData080cf72e","name":"GO:CC","legendgroup":"GO:CC","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","_isNestedKey":false,"frame":null},{"x":[16.8707819413088,20.829400709484,5.89215717290679,15.8634733880218],"y":[6.1892958966804,5.2281752076173,3.18017393043053,2.22533167463304],"text":["GO:0045296 (334) <br> cadherin binding <br> 6.467e-07","GO:0050839 (550) <br> cell adhesion molecule binding <br> 5.913e-06","GO:0005515 (14799) <br> protein binding <br> 6.604e-04","GO:0042802 (2091) <br> identical protein binding <br> 5.952e-03"],"key":["GO:0045296","GO:0050839","GO:0005515","GO:0042802"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(220,57,18,1)","opacity":0.8,"size":[17.6990756176197,18.4171795488718,22.4778292260975,20.1858855404128],"symbol":"circle","line":{"width":1.88976377952756,"color":"rgba(220,57,18,1)"}},"hoveron":"points","set":"SharedData080cf72e","name":"GO:MF","legendgroup":"GO:MF","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","_isNestedKey":false,"frame":null},{"x":[152.082600934564,152.080521685395,152.061808442868,151.974479977745,152.05141219702,151.375656216903],"y":[2.87965372249604,2.26112227131722,1.61886378803614,1.54350266934662,1.44366444174084,1.38488170166602],"text":["HPA:0470202 (638) <br> skin 2; endothelial cells[=Medium] <br> 1.319e-03","HPA:0470201 (889) <br> skin 2; endothelial cells[=Low] <br> 5.481e-03","HPA:0470181 (720) <br> skin 2; cells in granular layer[=Low] <br> 2.405e-02","HPA:0460202 (592) <br> skin 1; endothelial cells[=Medium] <br> 2.861e-02","HPA:0471392 (756) <br> skin 2; cells in basal layer[=Medium] <br> 3.600e-02","HPA:0210053 (1647) <br> fallopian tube; glandular cells[High] <br> 4.122e-02"],"key":["HPA:0470202","HPA:0470201","HPA:0470181","HPA:0460202","HPA:0471392","HPA:0210053"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(102,51,204,1)","opacity":0.8,"size":[18.6241591681541,19.0766916832662,18.7906693044457,18.520165705301,18.8573379262489,19.8840318549515],"symbol":"circle","line":{"width":1.88976377952756,"color":"rgba(102,51,204,1)"}},"hoveron":"points","set":"SharedData080cf72e","name":"HPA","legendgroup":"HPA","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","_isNestedKey":false,"frame":null},{"x":[107.212058682637,106.993601377216],"y":[2.03977460907594,1.75532034408257],"text":["KEGG:05100 (77) <br> Bacterial invasion of epithelial cells <br> 9.125e-03","KEGG:04530 (169) <br> Tight junction <br> 1.757e-02"],"key":["KEGG:05100","KEGG:04530"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(221,68,119,1)","opacity":0.8,"size":[15.3304961965207,16.6537188746765],"symbol":"circle","line":{"width":1.88976377952756,"color":"rgba(221,68,119,1)"}},"hoveron":"points","set":"SharedData080cf72e","name":"KEGG","legendgroup":"KEGG","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","_isNestedKey":false,"frame":null},{"x":[144.650850302996,143.223569932303],"y":[3.85912478296204,2.30967181052599],"text":["MIRNA:hsa-miR-34a-5p (729) <br> hsa-miR-34a-5p <br> 1.383e-04","MIRNA:hsa-let-7b-5p (1212) <br> hsa-let-7b-5p <br> 4.901e-03"],"key":["MIRNA:hsa-miR-34a-5p","MIRNA:hsa-let-7b-5p"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(34,170,153,1)","opacity":0.8,"size":[18.8076719443841,19.4876745220558],"symbol":"circle","line":{"width":1.88976377952756,"color":"rgba(34,170,153,1)"}},"hoveron":"points","set":"SharedData080cf72e","name":"MIRNA","legendgroup":"MIRNA","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","_isNestedKey":false,"frame":null},{"x":[112.037879363571],"y":[1.69738530181911],"text":"REAC:R-HSA-8941237 (4) <br> Invadopodia formation <br> 2.007e-02","key":["REAC:R-HSA-8941237"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(51,102,204,1)","opacity":0.8,"size":7.21870457613018,"symbol":"circle","line":{"width":1.88976377952756,"color":"rgba(51,102,204,1)"}},"hoveron":"points","set":"SharedData080cf72e","name":"REAC","legendgroup":"REAC","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","_isSimpleKey":true,"_isNestedKey":false,"frame":null},{"x":[120.340081137949,120.423158517171,120.34423500691,135.605549569927,126.52103815204,137.773869167612,120.319311793144,135.607626504407],"y":[3.96997378359314,2.42157899519,2.24905609345332,2.0016527900778,1.94409811701484,1.88203915277754,1.56511231991786,1.34526756890015],"text":["TF:M07354 (8083) <br> Factor: Egr-1; motif: GCGGGGGCGG <br> 1.072e-04","TF:M08878 (7658) <br> Factor: EGR; motif: CGCCCCCGCNN <br> 3.788e-03","TF:M01873 (6880) <br> Factor: Egr-1; motif: GCGGGGGCGG <br> 5.636e-03","TF:M02036 (9979) <br> Factor: WT1; motif: CGCCCCCNCN <br> 9.962e-03","TF:M00982 (7997) <br> Factor: KROX; motif: CCCGCCCCCRCCCC <br> 1.137e-02","TF:M10144 (4368) <br> Factor: ZNF341; motif: GRGGRRNRGNRGNRGGAASAGC <br> 1.312e-02","TF:M09761 (5295) <br> Factor: EGR1; motif: NGNGKGGGYGGNGS <br> 2.722e-02","TF:M02036_1 (5439) <br> Factor: WT1; motif: CGCCCCCNCN; match class: 1 <br> 4.516e-02"],"key":["TF:M07354","TF:M08878","TF:M01873","TF:M02036","TF:M00982","TF:M10144","TF:M09761","TF:M02036_1"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(85,116,166,1)","opacity":0.8,"size":[21.8006403785286,21.738921054504,21.6158700985213,22.0394336684351,21.7884342396419,21.0843301488801,21.311470383119,21.3429046985676],"symbol":"circle","line":{"width":1.88976377952756,"color":"rgba(85,116,166,1)"}},"hoveron":"points","set":"SharedData080cf72e","name":"TF","legendgroup":"TF","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","_isNestedKey":false,"frame":null},{"x":[199.898091246121],"y":[2.50053047092797],"text":"WP:WP4560 (18) <br> MFAP5 effect on permeability and motility of endothelial cells via cytoskeleton rearrangement <br> 3.158e-03","key":["WP:WP4560"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(0,153,198,1)","opacity":0.8,"size":12.3625052694583,"symbol":"circle","line":{"width":1.88976377952756,"color":"rgba(0,153,198,1)"}},"hoveron":"points","set":"SharedData080cf72e","name":"WP","legendgroup":"WP","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","_isSimpleKey":true,"_isNestedKey":false,"frame":null},{"x":[2,27.5544833807071],"y":[-1,-1],"text":"","type":"scatter","mode":"lines","line":{"width":11.3385826771654,"color":"rgba(220,57,18,1)","dash":"solid"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[29.6312394457788,38.9122623005842],"y":[-1,-1],"text":"","type":"scatter","mode":"lines","line":{"width":11.3385826771654,"color":"rgba(16,150,24,1)","dash":"solid"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[40.9890183656559,104.301003765431],"y":[-1,-1],"text":"","type":"scatter","mode":"lines","line":{"width":11.3385826771654,"color":"rgba(255,153,0,1)","dash":"solid"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[106.377759830503,107.517898910228],"y":[-1,-1],"text":"","type":"scatter","mode":"lines","line":{"width":11.3385826771654,"color":"rgba(221,68,119,1)","dash":"solid"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[109.594654975299,114.884152673037],"y":[-1,-1],"text":"","type":"scatter","mode":"lines","line":{"width":11.3385826771654,"color":"rgba(51,102,204,1)","dash":"solid"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[116.960908738108,141.136426091608],"y":[-1,-1],"text":"","type":"scatter","mode":"lines","line":{"width":11.3385826771654,"color":"rgba(85,116,166,1)","dash":"solid"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[143.21318215668,148.612747925866],"y":[-1,-1],"text":"","type":"scatter","mode":"lines","line":{"width":11.3385826771654,"color":"rgba(34,170,153,1)","dash":"solid"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[150.689503990938,152.421518549208],"y":[-1,-1],"text":"","type":"scatter","mode":"lines","line":{"width":11.3385826771654,"color":"rgba(102,51,204,1)","dash":"solid"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[154.498274614279,160.556172056093],"y":[-1,-1],"text":"","type":"scatter","mode":"lines","line":{"width":11.3385826771654,"color":"rgba(102,170,0,1)","dash":"solid"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[162.632928121165,196.463284421183],"y":[-1,-1],"text":"","type":"scatter","mode":"lines","line":{"width":11.3385826771654,"color":"rgba(153,0,153,1)","dash":"solid"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[198.540040486255,200.002076756065],"y":[-1,-1],"text":"","type":"scatter","mode":"lines","line":{"width":11.3385826771654,"color":"rgba(0,153,198,1)","dash":"solid"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":29.2835201328352,"r":6.6417600664176,"b":55.8781661388202,"l":55.1930261519303},"plot_bgcolor":"rgba(255,255,255,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0,210],"tickmode":"array","ticktext":["GO:MF","GO:CC","GO:BP","KEGG","REAC","TF","MIRNA","HPA","CORUM","HP","WP"],"tickvals":[14.7772416903536,34.2717508731815,72.6450110655437,106.947829370365,112.239403824168,129.048667414858,145.912965041273,151.555511270073,157.527223335186,179.548106271174,199.27105862116],"categoryorder":"array","categoryarray":["GO:MF","GO:CC","GO:BP","KEGG","REAC","TF","MIRNA","HPA","CORUM","HP","WP"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.65296803652968,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":10.6268161062682},"tickangle":-45,"showline":true,"linecolor":"rgba(190,190,190,1)","linewidth":0.132835201328352,"showgrid":false,"gridcolor":null,"gridwidth":0,"zeroline":false,"anchor":"y","title":"","hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-1,13],"tickmode":"array","ticktext":["0","4","8","12"],"tickvals":[0,4,8,12],"categoryorder":"array","categoryarray":["0","4","8","12"],"nticks":null,"ticks":"outside","tickcolor":"rgba(190,190,190,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":true,"linecolor":"rgba(190,190,190,1)","linewidth":0.66417600664176,"showgrid":false,"gridcolor":null,"gridwidth":0,"zeroline":false,"anchor":"x","title":"","hoverformat":".2f"},"annotations":[{"text":"-log10(p-adj)","x":0,"y":0.5,"showarrow":false,"ax":0,"ay":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":13.2835201328352},"xref":"paper","yref":"paper","textangle":-90,"xanchor":"right","yanchor":"center","annotationType":"axis","xshift":-31.5483603154836},{"text":"query_1","x":0.5,"y":1,"showarrow":false,"ax":0,"ay":0,"font":{"color":"rgba(169,169,169,1)","family":"","size":13.2835201328352},"xref":"paper","yref":"paper","textangle":-0,"xanchor":"center","yanchor":"bottom"}],"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1},{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":24.9730178497302,"yanchor":1,"ysizemode":"pixel"}],"showlegend":false,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.88976377952756,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.689497716895}},"hovermode":"closest","barmode":"relative","dragmode":"zoom"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"27b84e9f3a46":{"x":{},"y":{},"text":{},"colour":{},"size":{},"alpha":{},"type":"scatter"},"27b814b743b7":{"x":{},"xend":{},"y":{},"yend":{}},"27b82f927cc8":{"x":{},"xend":{},"y":{},"yend":{}},"27b898e21b2":{"x":{},"xend":{},"y":{},"yend":{}},"27b826ce3e31":{"x":{},"xend":{},"y":{},"yend":{}},"27b848c237da":{"x":{},"xend":{},"y":{},"yend":{}},"27b85b661bd5":{"x":{},"xend":{},"y":{},"yend":{}},"27b8611853c7":{"x":{},"xend":{},"y":{},"yend":{}},"27b87a7042b2":{"x":{},"xend":{},"y":{},"yend":{}},"27b8517e1207":{"x":{},"xend":{},"y":{},"yend":{}},"27b82c5b7853":{"x":{},"xend":{},"y":{},"yend":{}},"27b848f94e1c":{"x":{},"xend":{},"y":{},"yend":{}}},"cur_data":"27b84e9f3a46","visdat":{"27b84e9f3a46":["function (y) ","x"],"27b814b743b7":["function (y) ","x"],"27b82f927cc8":["function (y) ","x"],"27b898e21b2":["function (y) ","x"],"27b826ce3e31":["function (y) ","x"],"27b848c237da":["function (y) ","x"],"27b85b661bd5":["function (y) ","x"],"27b8611853c7":["function (y) ","x"],"27b87a7042b2":["function (y) ","x"],"27b8517e1207":["function (y) ","x"],"27b82c5b7853":["function (y) ","x"],"27b848f94e1c":["function (y) ","x"]},"highlight":{"on":"plotly_click","off":"plotly_doubleclick","persistent":false,"dynamic":false,"color":null,"selectize":false,"defaultValues":null,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0,"ctGroups":["SharedData080cf72e"]},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="volcano-plots" class="section level2">
+<h2>Volcano plots</h2>
+<p>BirA_TKS5WT_vs_BirA_TKS5DelPX</p>
+<p>Several interacting partners are lost after deletion of specific domain from TKS5, including FGD1, RNT4, MAP4 and EIF4A3.</p>
+<pre class="r"><code>plot_volcano(dep_manual, contrast = &quot;BirA_TKS5WT_vs_BirA_TKS5DelPX&quot;, label_size = 2, add_names = TRUE, adjusted = TRUE)</code></pre>
+<p><img src="figure/kolokvium_manik.Rmd/volcano-ubi1-1.png" width="672" style="display: block; margin: auto;" /></p>
+<!-- BirA_TKS5DelPX_vs_BirA -->
+<!-- ```{r volcano-ubi1, message=FALSE, warning=FALSE} -->
+<!-- plot_volcano(dep, contrast = "BirA_TKS5DelPX_vs_BirA", label_size = 2, add_names = TRUE, adjusted = TRUE) -->
+<!-- ``` -->
+<!-- BirA_TKS5WT_vs_BirA -->
+<!-- ```{r volcano-ubi4, message=FALSE, warning=FALSE} -->
+<!-- plot_volcano(dep, contrast = "BirA_TKS5WT_vs_BirA", label_size = 2, add_names = TRUE, adjusted = TRUE) -->
+<!-- ``` -->
+<!-- NT_vs_BirA -->
+<!-- # ```{r volcano-ubi6, message=FALSE, warning=FALSE} -->
+<!-- # plot_volcano(dep, contrast = "NT_vs_BirA", label_size = 2, add_names = TRUE, adjusted = TRUE) -->
+<!-- # ``` -->
+</div>
+<div id="barplots-of-single-proteins" class="section level2">
+<h2>Barplots of single proteins</h2>
+<p>These 2 proteins are enriched only in WT TKS5 but not in mutated form:</p>
+<pre class="r"><code>plot_single(dep, proteins = c(&quot;FGD1&quot;,&quot;MAP4&quot;), type = &quot;centered&quot;)</code></pre>
+<p><img src="figure/kolokvium_manik.Rmd/barplots-single-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>FGD1 and TKS5 have known function in the formaiton of invadopodia:</p>
+<p><img src="C:/Users/peter/AppData/Local/RStudio/tmp/paste-6A8CFB9D.png" /></p>
+<!-- # #Correlation plot of logFC WT_BirA vs DEL_BirA -->
+<!-- # ```{r} -->
+<!-- # data_results <- get_results(dep) -->
+<!-- # coef(lm(BirA_TKS5DelPX_vs_BirA_ratio ~BirA_TKS5WT_vs_BirA_ratio , data = data_results)) -->
+<!-- # data_results %>% -->
+<!-- #   ggplot(aes(x=BirA_TKS5WT_vs_BirA_ratio, -->
+<!-- #              y= BirA_TKS5DelPX_vs_BirA_ratio, -->
+<!-- #              label = name -->
+<!-- #              # col = BirA_TKS5WT_vs_BirA_significant, -->
+<!-- #              # shape = BirA_TKS5DelPX_vs_BirA_significant -->
+<!-- #              ))+ -->
+<!-- #   geom_point()+ -->
+<!-- #   geom_abline(intercept = 0.01397829, slope = 0.86765486) + -->
+<!-- #   geom_text_repel(max.overlaps = 20)+ -->
+<!-- #   labs(title = 'Correlation plot of WT_BirA vs Del_BirA', -->
+<!-- #        x = 'BirA_TKS5WT_vs_BirA' , -->
+<!-- #        y = 'BirA_TKS5DelPX_vs_BirA')+ -->
+<!-- #   theme_minimal() -->
+<!-- # gostres <- gost(query = c(data_results$name[!(data_results$BirA_TKS5DelPX_vs_BirA_significant & data_results$BirA_TKS5DelPX_vs_BirA_ratio > 0) & (data_results$BirA_TKS5WT_vs_BirA_significant & data_results$BirA_TKS5WT_vs_BirA_ratio > 0)]), organism = "hsapiens") -->
+<!-- # gostplot(gostres, capped = FALSE, interactive= T) -->
+<!-- # data_results_manual <- get_results(dep_manual) -->
+<!-- # gostres_man <- gost(query = c(data_results_manual$name[data_results_manual$BirA_TKS5WT_vs_BirA_TKS5DelPX_significant & data_results_manual$BirA_TKS5WT_vs_BirA_TKS5DelPX_ratio>0]), organism = "hsapiens") -->
+<!-- # gostplot(gostres_man, capped = FALSE, interactive= T) -->
+</div>
+</div>
+<div id="sessioninfo" class="section level1">
+<h1>SessionInfo()</h1>
+<pre class="r"><code>sessionInfo()</code></pre>
+<pre><code>R version 4.1.3 (2022-03-10)
+Platform: x86_64-w64-mingw32/x64 (64-bit)
+Running under: Windows 10 x64 (build 22000)
+
+Matrix products: default
+
+locale:
+[1] LC_COLLATE=English_United Kingdom.1252 
+[2] LC_CTYPE=English_United Kingdom.1252   
+[3] LC_MONETARY=English_United Kingdom.1252
+[4] LC_NUMERIC=C                           
+[5] LC_TIME=English_United Kingdom.1252    
+
+attached base packages:
+[1] stats4    stats     graphics  grDevices utils     datasets  methods  
+[8] base     
+
+other attached packages:
+ [1] SummarizedExperiment_1.24.0 Biobase_2.54.0             
+ [3] GenomicRanges_1.46.1        GenomeInfoDb_1.30.1        
+ [5] IRanges_2.28.0              S4Vectors_0.32.4           
+ [7] BiocGenerics_0.40.0         MatrixGenerics_1.6.0       
+ [9] matrixStats_0.62.0          DT_0.23                    
+[11] dplyr_1.0.9                 DEP_1.16.0                 
+[13] here_1.0.1                  gprofiler2_0.2.1           
+[15] enrichR_3.0                 ggrepel_0.9.1              
+[17] ggplot2_3.3.6               workflowr_1.7.0            
+
+loaded via a namespace (and not attached):
+  [1] circlize_0.4.15        plyr_1.8.7             gmm_1.6-6             
+  [4] lazyeval_0.2.2         shinydashboard_0.7.2   crosstalk_1.2.0       
+  [7] BiocParallel_1.28.3    digest_0.6.29          foreach_1.5.2         
+ [10] htmltools_0.5.2        fansi_1.0.3            magrittr_2.0.3        
+ [13] cluster_2.1.2          doParallel_1.0.17      tzdb_0.3.0            
+ [16] limma_3.50.3           ComplexHeatmap_2.10.0  readr_2.1.2           
+ [19] imputeLCMD_2.0         sandwich_3.0-1         colorspace_2.0-3      
+ [22] xfun_0.31              hexbin_1.28.2          callr_3.7.0           
+ [25] crayon_1.5.1           RCurl_1.98-1.6         jsonlite_1.8.0        
+ [28] impute_1.68.0          zoo_1.8-10             iterators_1.0.14      
+ [31] glue_1.6.2             gtable_0.3.0           zlibbioc_1.40.0       
+ [34] XVector_0.34.0         GetoptLong_1.0.5       DelayedArray_0.20.0   
+ [37] shape_1.4.6            scales_1.2.0           vsn_3.62.0            
+ [40] mvtnorm_1.1-3          DBI_1.1.2              Rcpp_1.0.8.3          
+ [43] mzR_2.28.0             viridisLite_0.4.0      xtable_1.8-4          
+ [46] clue_0.3-60            preprocessCore_1.56.0  MsCoreUtils_1.6.2     
+ [49] htmlwidgets_1.5.4      httr_1.4.3             RColorBrewer_1.1-3    
+ [52] ellipsis_0.3.2         farver_2.1.0           pkgconfig_2.0.3       
+ [55] XML_3.99-0.9           sass_0.4.1             utf8_1.2.2            
+ [58] labeling_0.4.2         tidyselect_1.1.2       rlang_1.0.2           
+ [61] later_1.3.0            munsell_0.5.0          tools_4.1.3           
+ [64] cli_3.2.0              generics_0.1.2         fdrtool_1.2.17        
+ [67] evaluate_0.15          stringr_1.4.0          fastmap_1.1.0         
+ [70] mzID_1.32.0            yaml_2.3.5             processx_3.5.3        
+ [73] knitr_1.39             fs_1.5.2               purrr_0.3.4           
+ [76] ncdf4_1.19             whisker_0.4            mime_0.12             
+ [79] compiler_4.1.3         rstudioapi_0.13        plotly_4.10.0         
+ [82] curl_4.3.2             png_0.1-7              affyio_1.64.0         
+ [85] tibble_3.1.6           bslib_0.3.1            stringi_1.7.6         
+ [88] highr_0.9              ps_1.7.0               MSnbase_2.20.1        
+ [91] lattice_0.20-45        ProtGenerics_1.26.0    Matrix_1.4-0          
+ [94] tmvtnorm_1.5           vctrs_0.4.1            pillar_1.7.0          
+ [97] norm_1.0-10.0          lifecycle_1.0.1        BiocManager_1.30.18   
+[100] jquerylib_0.1.4        MALDIquant_1.21        GlobalOptions_0.1.2   
+[103] data.table_1.14.2      bitops_1.0-7           httpuv_1.6.5          
+[106] R6_2.5.1               pcaMethods_1.86.0      affy_1.72.0           
+[109] promises_1.2.0.1       gridExtra_2.3          codetools_0.2-18      
+[112] MASS_7.3-57            assertthat_0.2.1       rprojroot_2.0.3       
+[115] rjson_0.2.21           withr_2.5.0            GenomeInfoDbData_1.2.7
+[118] parallel_4.1.3         hms_1.1.1              grid_4.1.3            
+[121] tidyr_1.2.0            rmarkdown_2.14         git2r_0.30.1          
+[124] getPass_0.2-2          shiny_1.7.1           </code></pre>
+<br>
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
+<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> Session information
+</button>
+</p>
+<div id="workflowr-sessioninfo" class="collapse">
+<pre class="r"><code>sessionInfo()</code></pre>
+<pre><code>R version 4.1.3 (2022-03-10)
+Platform: x86_64-w64-mingw32/x64 (64-bit)
+Running under: Windows 10 x64 (build 22000)
+
+Matrix products: default
+
+locale:
+[1] LC_COLLATE=English_United Kingdom.1252 
+[2] LC_CTYPE=English_United Kingdom.1252   
+[3] LC_MONETARY=English_United Kingdom.1252
+[4] LC_NUMERIC=C                           
+[5] LC_TIME=English_United Kingdom.1252    
+
+attached base packages:
+[1] stats4    stats     graphics  grDevices utils     datasets  methods  
+[8] base     
+
+other attached packages:
+ [1] SummarizedExperiment_1.24.0 Biobase_2.54.0             
+ [3] GenomicRanges_1.46.1        GenomeInfoDb_1.30.1        
+ [5] IRanges_2.28.0              S4Vectors_0.32.4           
+ [7] BiocGenerics_0.40.0         MatrixGenerics_1.6.0       
+ [9] matrixStats_0.62.0          DT_0.23                    
+[11] dplyr_1.0.9                 DEP_1.16.0                 
+[13] here_1.0.1                  gprofiler2_0.2.1           
+[15] enrichR_3.0                 ggrepel_0.9.1              
+[17] ggplot2_3.3.6               workflowr_1.7.0            
+
+loaded via a namespace (and not attached):
+  [1] circlize_0.4.15        plyr_1.8.7             gmm_1.6-6             
+  [4] lazyeval_0.2.2         shinydashboard_0.7.2   crosstalk_1.2.0       
+  [7] BiocParallel_1.28.3    digest_0.6.29          foreach_1.5.2         
+ [10] htmltools_0.5.2        fansi_1.0.3            magrittr_2.0.3        
+ [13] cluster_2.1.2          doParallel_1.0.17      tzdb_0.3.0            
+ [16] limma_3.50.3           ComplexHeatmap_2.10.0  readr_2.1.2           
+ [19] imputeLCMD_2.0         sandwich_3.0-1         colorspace_2.0-3      
+ [22] xfun_0.31              hexbin_1.28.2          callr_3.7.0           
+ [25] crayon_1.5.1           RCurl_1.98-1.6         jsonlite_1.8.0        
+ [28] impute_1.68.0          zoo_1.8-10             iterators_1.0.14      
+ [31] glue_1.6.2             gtable_0.3.0           zlibbioc_1.40.0       
+ [34] XVector_0.34.0         GetoptLong_1.0.5       DelayedArray_0.20.0   
+ [37] shape_1.4.6            scales_1.2.0           vsn_3.62.0            
+ [40] mvtnorm_1.1-3          DBI_1.1.2              Rcpp_1.0.8.3          
+ [43] mzR_2.28.0             viridisLite_0.4.0      xtable_1.8-4          
+ [46] clue_0.3-60            preprocessCore_1.56.0  MsCoreUtils_1.6.2     
+ [49] htmlwidgets_1.5.4      httr_1.4.3             RColorBrewer_1.1-3    
+ [52] ellipsis_0.3.2         farver_2.1.0           pkgconfig_2.0.3       
+ [55] XML_3.99-0.9           sass_0.4.1             utf8_1.2.2            
+ [58] labeling_0.4.2         tidyselect_1.1.2       rlang_1.0.2           
+ [61] later_1.3.0            munsell_0.5.0          tools_4.1.3           
+ [64] cli_3.2.0              generics_0.1.2         fdrtool_1.2.17        
+ [67] evaluate_0.15          stringr_1.4.0          fastmap_1.1.0         
+ [70] mzID_1.32.0            yaml_2.3.5             processx_3.5.3        
+ [73] knitr_1.39             fs_1.5.2               purrr_0.3.4           
+ [76] ncdf4_1.19             whisker_0.4            mime_0.12             
+ [79] compiler_4.1.3         rstudioapi_0.13        plotly_4.10.0         
+ [82] curl_4.3.2             png_0.1-7              affyio_1.64.0         
+ [85] tibble_3.1.6           bslib_0.3.1            stringi_1.7.6         
+ [88] highr_0.9              ps_1.7.0               MSnbase_2.20.1        
+ [91] lattice_0.20-45        ProtGenerics_1.26.0    Matrix_1.4-0          
+ [94] tmvtnorm_1.5           vctrs_0.4.1            pillar_1.7.0          
+ [97] norm_1.0-10.0          lifecycle_1.0.1        BiocManager_1.30.18   
+[100] jquerylib_0.1.4        MALDIquant_1.21        GlobalOptions_0.1.2   
+[103] data.table_1.14.2      bitops_1.0-7           httpuv_1.6.5          
+[106] R6_2.5.1               pcaMethods_1.86.0      affy_1.72.0           
+[109] promises_1.2.0.1       gridExtra_2.3          codetools_0.2-18      
+[112] MASS_7.3-57            assertthat_0.2.1       rprojroot_2.0.3       
+[115] rjson_0.2.21           withr_2.5.0            GenomeInfoDbData_1.2.7
+[118] parallel_4.1.3         hms_1.1.1              grid_4.1.3            
+[121] tidyr_1.2.0            rmarkdown_2.14         git2r_0.30.1          
+[124] getPass_0.2-2          shiny_1.7.1           </code></pre>
+</div>
+</div>
+
+
+<!-- Adjust MathJax settings so that all math formulae are shown using
+TeX fonts only; see
+https://docs.mathjax.org/en/latest/web/configuration.html. This will make
+the presentation more consistent at the cost of the webpage sometimes
+taking slightly longer to load. Note that this only works because the
+footer is added to webpages before the MathJax javascript. -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    "HTML-CSS": { availableFonts: ["TeX"] }
+  });
+</script>
+
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
